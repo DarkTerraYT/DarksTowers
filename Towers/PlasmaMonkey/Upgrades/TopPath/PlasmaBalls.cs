@@ -14,7 +14,7 @@ public class PlasmaBalls : ModUpgrade<PlasmaMonkey>
     public override int Cost => 725;
 
     public override string Description =>
-        "The plasma darts are now conjured so hot it's like comparing the temperature of dirt to fire! Even more pierce and damage and melts straight through Purple Bloons' magic coating.";
+        "The plasma darts condense down into plasma balls. You probably already know the deal already, more damage, more pierce yada yada... Plasma balls can also damage purples now.";
 
     public override void ApplyUpgrade(TowerModel towerModel)
     {

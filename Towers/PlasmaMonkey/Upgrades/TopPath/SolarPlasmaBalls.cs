@@ -41,7 +41,7 @@ public class SolarPlasmaBalls : ModUpgrade<PlasmaMonkey>
     public override string DisplayName => "Stellar Plasma";
 
     public override string Description => "Plasma Monkey now harnesses the power of the Stars! With a little help from the Sun Avatars, the Plasma Monkey can create balls of Stellar Plasma!" +
-                                          " This process takes a while, though once it's shot out, it melts every bloon in it's path! Each stellar plasma ball can hit each bloon multiple times instead of once!";
+                                          " This process takes a while, though once it's shot out, it melts every bloon in its path! Each stellar plasma ball can hit each bloon multiple times instead of once!";
 
     public override int Path => Top;
 

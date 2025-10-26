@@ -13,7 +13,7 @@ public class FieryPlasmaDarts : ModUpgrade<PlasmaMonkey>
     public override int Cost => 725;
 
     public override string Description =>
-        "The plasma darts are now conjured so hot it's like comparing the temperature of dirt to fire! Even more pierce and damage and melts straight through Purple Bloons' magic coating.";
+        "The plasma darts are now conjured so hot it's like comparing the temperature of dirt to fire! Even more pierce and damage.";
 
     public override void ApplyUpgrade(TowerModel towerModel)
     {
@@ -22,7 +22,5 @@ public class FieryPlasmaDarts : ModUpgrade<PlasmaMonkey>
         projectile.pierce += 5;
         projectile.GetDamageModel().damage += 2;
         projectile.ApplyDisplay<FieryPlasmaDart>();
-
-        towerModel.GetDescendants<FilterInvisibleModel>().ForEach(filter => filter.isActive = false);
     }
 }

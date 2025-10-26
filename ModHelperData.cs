@@ -2,8 +2,8 @@ namespace DarksTowers;
 
 public static class ModHelperData
 {
-    public const string WorksOnVersion = "50.2";
-    public const string Version = "1.0.3";
+    public const string WorksOnVersion = "51.0";
+    public const string Version = "1.0.4";
     public const string Name = "DarksTowers";
 
     public const string Description =
