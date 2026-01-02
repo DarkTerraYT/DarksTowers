@@ -6,6 +6,8 @@
 Dark's Towers
 </h1>
 
+<img alt="GitHub all releases" height="25" src="https://img.shields.io/github/downloads/DarkTerraYT/DarksTowers/total?label=Total%20Dowloads">
+
 Remaster of the original [DarksTowers](https://github.com/DarkTerraYT/OGDarksTowers) mod (now known as OG Darks
 Towers).
 This is part of my goal of remastering my old mods to increase their quality as we all know they were pretty bad.
