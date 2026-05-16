@@ -9,10 +9,15 @@ using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.Display;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using Il2CppAssets.Scripts.Models.Towers.Behaviors.Attack;
+using Il2CppAssets.Scripts.Unity.Display.Animation;
 using Il2CppNinjaKiwi.Common.ResourceUtils;
+using System.Collections.Generic;
+using BTD_Mod_Helper;
 using UnityEngine;
 
 namespace DarksTowers.Displays;
+
+#region PlasmaMonkey
 public class PlasmaMonkeyDisplay : ModTowerDisplay<PlasmaMonkey>
 {
     public override string BaseDisplay => GetDisplay(TowerType.DartMonkey);
@@ -307,7 +312,6 @@ public class GigaPlasmaGunsTowerDisplay : ModTowerDisplay<PlasmaMonkey>
             node.transform.GetChild(0).localPosition = new(0, -1, -5);
             node.transform.GetChild(0).localRotation = Quaternion.Euler(3.8f, 0, 0);
             node.transform.GetChild(0).localScale = new(1, 1, 1);
-            node.transform.GetChild(0).GetChild(0).GetChild(3).gameObject.active = true;
             
             node.genericRenderers = node.genericRenderers.AddTo(node.transform.GetChild(0).GetChild(0).GetChild(3).GetComponent<SkinnedMeshRenderer>());
             node.genericRendererLayers = new Il2CppStructArray<int>(2);
@@ -326,7 +330,27 @@ public class GigaPlasmaGunsTowerDisplay : ModTowerDisplay<PlasmaMonkey>
         }
     }
 }
+public class PlasmaMonkeyParagonDisplay : ModTowerCustomDisplay<PlasmaMonkey>
+{
+    public override float Scale => 1;
 
+    public override bool UseForTower(params int[] tiers)
+    {
+        return IsParagon(tiers);
+    }
+
+    public override string AssetBundleName => "darkstowers";
+    public override string PrefabName => "PMP";
+
+    public override void ModifyDisplayNode(UnityDisplayNode node)
+    {
+        var cycler = node.gameObject.AddComponent<IdleAnimationCycler>();
+        cycler.variants.Add(new IdleAnimationCycler.IdleVariantData(1, "Armature|IdleAlt", 0.08f));
+    }
+}
+#endregion
+
+#region MonkeyOfLight
 public class MonkeyOfLightDisplay : ModTowerDisplay<MonkeyOfLight>
 {
     public override string BaseDisplay => GetDisplay(TowerType.DartMonkey);
@@ -349,7 +373,9 @@ public class MonkeyOfLightDisplay : ModTowerDisplay<MonkeyOfLight>
         node.RemoveBone("NewMonkeyRigDart:DartCtl");
     }
 }
+#endregion
 
+#region CyberMonkey
 public class CyberMonkeyDisplay : ModTowerDisplay<CyberMonkey>
 {
     public override string BaseDisplay => GetDisplay(TowerType.DartMonkey);
@@ -371,3 +397,4 @@ public class CyberMonkeyDisplay : ModTowerDisplay<CyberMonkey>
         }
     }
 }
+#endregion

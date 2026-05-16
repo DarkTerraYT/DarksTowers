@@ -1,6 +1,8 @@
 ﻿using System;
+using System.IO;
 using BTD_Mod_Helper.Api.Display;
 using BTD_Mod_Helper.Extensions;
+using DarksTowers.Towers.PlasmaMonkey;
 using Il2CppAssets.Scripts.Models.Towers.Projectiles.Behaviors;
 using Il2CppAssets.Scripts.Unity;
 using Il2CppAssets.Scripts.Unity.Display;
@@ -48,6 +50,8 @@ public class Plasma : ModBloonOverlay
     
     public override string BaseOverlay => Game.instance.model.GetTowerFromId("MortarMonkey-003")
         .GetDescendant<AddBehaviorToBloonModel>().overlayType;
+
+    public override Vector3 PositionOffset => new Vector3(0, 0, -17.5f);
 
     public override void ModifyDisplayNode(UnityDisplayNode node)
     {
@@ -97,9 +101,9 @@ public class PlasmaBall : ModDisplay2D
 
 public class FieryPlasmaBall : ModDisplay2D
 {
+    public override Vector3 PositionOffset => new Vector3(0, 0, 10);
     protected override string TextureName => "FieryPlasmaBall";
 }
-
 /*public class SolarPlasmaBall : ModDisplay2D
 {
     public override Vector3 PositionOffset => new Vector3(0, 0, 5);
@@ -112,6 +116,11 @@ public class SolarPlasmaBall : ModCustomDisplay
 
     public override float Scale => 1;
 }
+public class ParagonPlasmaBall : ModCustomDisplay
+{
+    public override string AssetBundleName => "darkstowers";
+    public override string PrefabName => "PlasmaSingularity";
+}
 
 public class PlasmaBeam : ModDisplay2D
 {
@@ -121,7 +130,6 @@ public class SolarPlasmaBeam : ModDisplay2D
 {
     protected override string TextureName => "SolarPlasmaBeam";
 }
-
 public class CyberBeam : ModDisplay2D
 {
     protected override string TextureName => "CyberBeam";
