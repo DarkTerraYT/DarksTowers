@@ -31,7 +31,7 @@ public class BloonDisintegration : ModUpgrade<PlasmaMonkey>
     }
 
     public override string Description =>
-        "No longer does any damage, but disintegrates bloons quickly with the plasma fire. Ability, Bloon Disintegration: Replaces MOAB Incineration, but now the DOT is 4x stronger.";
+        "No longer does any damage, but disintegrates bloons quickly with the plasma fire. Ability, Bloon Disintegration: Replaces MOAB Incineration, 4x stronger DOT.";
 
     public override int Path => Middle;
     public override int Tier => 5;

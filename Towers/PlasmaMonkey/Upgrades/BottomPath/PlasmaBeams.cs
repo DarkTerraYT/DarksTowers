@@ -25,8 +25,8 @@ public class PlasmaBeams : ModUpgrade<PlasmaMonkey>
         projectile.pierce *= 2.5f;
         projectile.GetDamageModel().damage += 2;
         projectile.ApplyDisplay<PlasmaBeam>();
-        projectile.radius /= 2.5f;
-
+        projectile.radius = 1f;
+        
         if (weaponModel.projectile.HasBehavior<TravelStraitModel>())
         {
             var travelModel = projectile.GetBehavior<TravelStraitModel>();

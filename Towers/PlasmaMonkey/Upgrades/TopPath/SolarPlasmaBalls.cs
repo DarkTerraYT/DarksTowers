@@ -24,7 +24,7 @@ public class SolarPlasmaBalls : ModUpgrade<PlasmaMonkey>
         weaponModel.rate = 3;
         
         var projectile = weaponModel.projectile;
-        projectile.pierce = 50;
+        projectile.pierce = 500000;
         projectile.id = "SolarPlasmaBall";
         projectile.GetDamageModel().damage = 2000;
         projectile.ApplyDisplay<SolarPlasmaBall>();

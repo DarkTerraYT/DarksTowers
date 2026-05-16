@@ -40,9 +40,11 @@ public class MoabIncineration : ModUpgrade<PlasmaMonkey>
         attackModel2.weapons[0].rate *= 0.9f;
         attackModel2.weapons[0].projectile.AddBehavior(new DamageModifierForTagModel("DamageModifierForTagModel_", "Moabs", 4f, 0, false, true));
         var activateAttackModel = new ActivateAttackModel("ActivateAttackModel_MoabIncineration", 10, true, new Il2CppReferenceArray<AttackModel>([attackModel2]), false, true, false, false, false, true);
-        var abiliy = new AbilityModel("AbilityModel_MoabIncineration", "MOAB Incineration", "Darts do 4x damage to MOAB class bloons for a short period of time", 0, 0, GetSpriteReference(Icon), 60, new Il2CppReferenceArray<Model>([activateAttackModel]), false, false, Id, 0, 0, 999999999, 999999999, false, false);
+        var ability = new AbilityModel("AbilityModel_MoabIncineration", "MOAB Incineration", "Darts do 4x damage to MOAB class bloons for a short period of time", 0, 0, GetSpriteReference(Icon),
+            60, new Il2CppReferenceArray<Model>([activateAttackModel]),false, false,
+            Id, 0, 0, 999999999, 999999999, false, false);
         
-        towerModel.AddBehavior(abiliy);
+        towerModel.AddBehavior(ability);
     }
 
     public override int Path => Middle;

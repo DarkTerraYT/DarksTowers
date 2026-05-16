@@ -2,6 +2,7 @@
 using BTD_Mod_Helper.Api.Display;
 using BTD_Mod_Helper.Extensions;
 using DarksTowers.Towers;
+using DarksTowers.Towers.FireMonkey;
 using DarksTowers.Towers.PlasmaMonkey;
 using Il2CppAssets.Scripts.Models.GenericBehaviors;
 using Il2CppAssets.Scripts.Models.Towers;
@@ -312,6 +313,7 @@ public class GigaPlasmaGunsTowerDisplay : ModTowerDisplay<PlasmaMonkey>
             node.transform.GetChild(0).localPosition = new(0, -1, -5);
             node.transform.GetChild(0).localRotation = Quaternion.Euler(3.8f, 0, 0);
             node.transform.GetChild(0).localScale = new(1, 1, 1);
+            node.transform.GetChild(0).GetChild(0).GetChild(3).gameObject.active = true;
             
             node.genericRenderers = node.genericRenderers.AddTo(node.transform.GetChild(0).GetChild(0).GetChild(3).GetComponent<SkinnedMeshRenderer>());
             node.genericRendererLayers = new Il2CppStructArray<int>(2);
@@ -345,6 +347,67 @@ public class PlasmaMonkeyParagonDisplay : ModTowerCustomDisplay<PlasmaMonkey>
     public override void ModifyDisplayNode(UnityDisplayNode node)
     {
         var cycler = node.gameObject.AddComponent<IdleAnimationCycler>();
+        cycler.variants.Add(new IdleAnimationCycler.IdleVariantData(1, "Armature|IdleAlt", 0.08f));
+    }
+}
+#endregion
+
+#region FireMonkey
+public class FireMonkeyDisplay : ModTowerCustomDisplay<FireMonkey>
+{
+    public override string AssetBundleName => "darkstowers";
+    public override string PrefabName => "FireMonkey";
+
+    public override float Scale => 1;
+
+    public override bool UseForTower(params int[] tiers)
+    {
+        return tiers.Max() < 3;
+    }
+
+    public override void ModifyDisplayNode(UnityDisplayNode node)
+    {
+        foreach (var renderer in node.GetMeshRenderers())
+        {
+            renderer.ApplyOutlineShader();
+            renderer.SetOutlineColor(new Color32(194, 74, 0, 255));
+        }
+
+        node.gameObject.AddComponent<FireMonkeyAnimationEvents>();
+        var animator = node.GetComponent<Animator>();
+        var cycler = animator.gameObject.AddComponent<IdleAnimationCycler>();
+        cycler.animator = animator;
+        cycler.variants.Add(new IdleAnimationCycler.IdleVariantData(1, "Armature|IdleAlt", 0.08f));
+    }
+}
+public class FireSpiritDisplay : ModCustomDisplay
+{
+    public override string AssetBundleName => "darkstowers";
+    public override string PrefabName => "FireSpirit300";
+}
+public class FireSpirit2Display : ModCustomDisplay
+{
+    public override string AssetBundleName => "darkstowers";
+    public override string PrefabName => "FireSpirit400";
+    
+    public override void ModifyDisplayNode(UnityDisplayNode node)
+    {
+        var animator = node.GetComponent<Animator>();
+        var cycler = animator.gameObject.AddComponent<IdleAnimationCycler>();
+        cycler.animator = animator;
+        cycler.variants.Add(new IdleAnimationCycler.IdleVariantData(1, "Armature|IdleAlt", 0.08f));
+    }
+}
+
+public class FireSpirit3Display : ModCustomDisplay
+{
+    public override string AssetBundleName => "darkstowers";
+    public override string PrefabName => "FireSpirit500";
+    public override void ModifyDisplayNode(UnityDisplayNode node)
+    {
+        var animator = node.GetComponent<Animator>();
+        var cycler = animator.gameObject.AddComponent<IdleAnimationCycler>();
+        cycler.animator = animator;
         cycler.variants.Add(new IdleAnimationCycler.IdleVariantData(1, "Armature|IdleAlt", 0.08f));
     }
 }

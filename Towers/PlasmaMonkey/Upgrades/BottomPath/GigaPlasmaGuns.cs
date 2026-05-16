@@ -26,7 +26,7 @@ public class GigaPlasmaGuns : ModUpgrade<PlasmaMonkey>
         
         var projectile = weaponModel.projectile;
         projectile.pierce = 1;
-        projectile.GetDamageModel().damage = 1;
+        projectile.GetDamageModel().damage = 3;
         projectile.RemoveBehaviors<DamageModifierForTagModel>();
         projectile.ApplyDisplay<SolarPlasmaBeam>();
 

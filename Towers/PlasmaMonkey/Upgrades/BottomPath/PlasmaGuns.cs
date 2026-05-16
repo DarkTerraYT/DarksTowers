@@ -44,8 +44,6 @@ public class PlasmaGuns : ModUpgrade<PlasmaMonkey>
         projectile.AddBehavior(new DamageModifierForTagModel("DamageModifierForTagModel_Fortified", "Fortified", 1.35f,
             1, false, true));
         projectile.ApplyDisplay<PlasmaBeam>();
-
-        projectile.radius = towerModel.range / 2;
         
 
         if (weaponModel.projectile.HasBehavior<TravelStraitModel>())

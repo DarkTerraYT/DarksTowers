@@ -130,6 +130,13 @@ public class SolarPlasmaBeam : ModDisplay2D
 {
     protected override string TextureName => "SolarPlasmaBeam";
 }
+
+public class FireRing : ModCustomDisplay
+{
+    public override string AssetBundleName => "darkstowers";
+    public override string PrefabName => "FireRingEffect1";
+}
+
 public class CyberBeam : ModDisplay2D
 {
     protected override string TextureName => "CyberBeam";

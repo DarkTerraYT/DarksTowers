@@ -1,1 +1,1 @@
-Plasma Monkey paragon
+Plasma Monkey
