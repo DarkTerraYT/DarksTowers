@@ -86,6 +86,7 @@ public class PlasmaMonkeyParagon : ModParagonUpgrade<PlasmaMonkey>
        towerModel.GetDescendants<FilterInvisibleModel>().ForEach(filter => filter.isActive = false);
         
         var ability = Game.instance.model.GetTowerFromId("MonkeyBuccaneer-Paragon").GetAbility().Duplicate();
+        ability.name = "AbilityModel_GravitationalCollapse";
         ability.modelName = "AbilityModel_GravitationalCollapse";
         ability.RemoveBehavior<ActivateAttackModel>();
         ability.GetBehavior<CreateSoundOnAbilityModel>().sound = null; // for some reason there must be at least 1 behavior for the ability to appear so I'll just make it do nothing
@@ -95,6 +96,7 @@ public class PlasmaMonkeyParagon : ModParagonUpgrade<PlasmaMonkey>
         towerModel.AddBehavior(ability);
         
         var ability2 = ability.Duplicate();
+        ability2.name += "_2";
         ability2.modelName += "_2";
         ability2.activateOnPreLeak = true;
         ability2.isHidden = true;
@@ -176,7 +178,9 @@ public class PlasmaMonkeyParagon : ModParagonUpgrade<PlasmaMonkey>
     {
         public static void Postfix(Ability __instance)
         {
-            if (__instance.abilityModel.modelName.StartsWith("AbilityModel_GravitationalCollapse"))
+            Log(__instance.abilityModel.modelName);
+            Log(__instance.abilityModel.name);
+            if (__instance.abilityModel.modelName.Contains("GravitationalCollapse"))
             {
                 var tower = __instance.tower;
                 Vector3 towerPos = tower.Position.data;
